@@ -1,14 +1,20 @@
+import 'package:json_annotation/json_annotation.dart';
 
+part 'employee.g.dart';
 
-class Employee{
-  final String id;
-  final String name;
-  final String salary;
-  final String age;
+@JsonSerializable()
+class Employee {
+  String id;
+  @JsonKey(name: 'employee_name')
+  String empName;
+  @JsonKey(name: 'employee_salary')
+  String empSalary;
+  @JsonKey(name: 'employee_age')
+  String empAge;
 
-  Employee(this.id, this.name, this.salary, this.age);
+  Employee();
 
-  factory Employee.fromJson(Map<String, dynamic> json){
-
-  }
+  factory Employee.fromJson(Map<String, dynamic> json) =>
+      _$EmployeeFromJson(json);
+  Map<String, dynamic> toJson() => _$EmployeeToJson(this);
 }
